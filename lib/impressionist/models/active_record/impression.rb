@@ -8,11 +8,12 @@ class Impression < ActiveRecord::Base
   private
 
   def update_impressions_counter_cache
+    return unless Object.const_defined? self.impressionable_type
     impressionable_class = self.impressionable_type.constantize
 
     if impressionable_class.counter_cache_options
-      resouce = impressionable_class.find(self.impressionable_id)
-      resouce.try(:update_counter_cache)
+      resource = impressionable_class.find(self.impressionable_id)
+      resource.try(:update_counter_cache)
     end
   end
 end
