@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+xclass ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :secondary_before_filter
 
